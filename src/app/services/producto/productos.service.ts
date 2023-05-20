@@ -13,4 +13,10 @@ export class ProductosService {
   obtenerProductos(){
     return this.http.get<any>(`${this.cs.base}products`);
   }
+
+  // SERVICIOS PARA OBTENER LA ALISTA DE LOS PRODUCTOS
+  listaCategoriasProductos(){
+    return this.http.get<any>(`${this.cs.base}products/categories`);
+  }
+
 }

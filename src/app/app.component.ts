@@ -9,12 +9,9 @@ import { ProductosService } from './services/producto/productos.service';
 export class AppComponent {
   title = 'pruebas_nexos';
 
-  constructor(private servicesProductos: ProductosService){}
+  constructor(){}
 
   ngOnInit(): void{
-    this.servicesProductos.obtenerProductos().toPromise().then(resp =>{
-      debugger
-      console.log(resp)
-    });
+    
   }
 }
