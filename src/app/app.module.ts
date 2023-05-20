@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ProductosPipe } from './pipes/productos.pipe';
+import { IndexComponent } from './components/index/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductosPipe
+    ProductosPipe,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
