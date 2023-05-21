@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './docs/index.component';
+import * as jquery from 'jquery';
+import { DetalleComponent } from './docs/detalle/detalle.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         IndexComponent,
+        DetalleComponent,
     ],
     providers: [
         {
@@ -24,6 +27,7 @@ import { IndexComponent } from './docs/index.component';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        
     ]
 })
 export class AppModule { }

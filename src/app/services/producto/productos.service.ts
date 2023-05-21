@@ -19,4 +19,14 @@ export class ProductosService {
     return this.http.get<any>(`${this.cs.base}products/categories`);
   }
 
+  // SERVICIOS PARA OBTENER ID DEL PRODUCTO
+  idProductos(id:any){
+    return this.http.get<any>(`${this.cs.base}products/${id}`);
+  }
+
+  // SERVICIOS PARA ELIMINAR UN PRODUCTO
+  idDeleteProductos(id:any){
+    return this.http.delete<any>(`${this.cs.base}products/${id}`);
+  }
+
 }

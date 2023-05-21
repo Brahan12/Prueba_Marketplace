@@ -1,0 +1,65 @@
+<div class="content">
+	<!-- Header -->
+    <div class="header">
+        <nav class="navegacion">
+			<ul class="menu">
+				<li><a class="menuIcon"><svg class="menuIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+						<path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+					</svg></a>
+					<a class="menuLetras">Productos</a>
+                    <ul class="submenu">
+						<li><a (click)="menu()">Total productos</a></li>
+					</ul>
+                </li>
+			</ul>
+		</nav>
+        <h1 (click)="menu()" class="title">Bank Inc</h1>
+        <div class="container-icon">
+			<div (click)="desplegableCarrito()"  class="container-cart-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+					</svg>
+				<div class="count-products">
+					<span id="contador-productos">{{cont}}</span>
+				</div>
+			</div>
+
+			<div *ngFor="let item of agregarCarrito" class="container-cart-products hidden-cart">
+				<div class="row-product">
+					<div  class="cart-product">
+						<div class="info-cart-product">
+							<span class="cantidad-producto-carrito">{{cont}}</span>
+							<p class="titulo-producto-carrito">{{item.title}}</p>
+							<span class="precio-producto-carrito">{{item.price}}</span>
+						</div>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close" >
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+						</svg>
+					</div>
+				</div>
+				<div class="cart-total">
+					<h3>Total:</h3>
+					<span class="total-pagar">{{totalProductos}}</span>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <div class="containerDetalle">
+        <div class="detalleCard">
+            <h1>{{category}}</h1>
+            <h3>{{title}}</h3>
+            <img [src]="image" alt="" width="150px">
+            <p>{{description}}</p>
+            <p>{{price}}</p>
+            <button class="btn-cart" (click)="getCarrito()">Añadir al carrito</button>
+			<button class="btn-delete" >Eliminar del carrito</button>
+        </div>
+    </div>
+	
+	<div>
+		<footer class="contentFooter">
+			<p>2023 Back Inc</p>
+		</footer>
+	</div>
+</div>

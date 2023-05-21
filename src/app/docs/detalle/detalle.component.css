@@ -1,0 +1,108 @@
+/* css detalle */
+
+.containerDetalle{
+    width: 55%;
+    margin: 4em 24%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px 5px rgba(76, 76, 233, 0.582);
+}
+
+.detalleCard{
+    text-align: center;
+}
+
+.detalleCard img{
+    padding: 15px;
+}
+
+.detalleCard img:hover{
+    transform: scale(1.2);
+}
+
+.detalleCard h1{
+    padding-top: 1em;
+    color: #333;
+}
+
+.detalleCard h1:hover {
+    background-color: white;
+    border-radius: 20px;
+    cursor:auto;
+}
+
+.detalleCard p{
+    width: 50%;
+    font-weight: 600;
+    margin: 1em 25%;
+}
+
+.detalleCard .btn-cart, .detalleCard .btn-delete{
+    background-color: rgba(24,31,214,1);
+    color: white;
+    border: 0;
+    outline: none;
+    padding: 9px 29px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 16px;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+.detalleCard .btn-delete{
+    margin-left: 2em;
+    background-color: rgba(221, 33, 48, 0.993);
+}
+
+.detalleCard .btn-cart:hover{
+    background-color: rgba(24, 30, 214, 0.705);
+}
+
+.detalleCard .btn-delete:hover{
+    background-color: rgba(221, 33, 49, 0.644);
+}
+
+/* responsive */
+
+@media screen and (max-width: 768px){
+    .containerDetalle {
+        width: 65%;
+        margin: 4em 19%;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .detalleCard p {
+        width: 70%;
+        font-weight: 600;
+        margin: 1em 14%;
+    }
+
+    .containerDetalle {
+        width: 87%;
+        margin: 4em 6%;
+    }
+
+    .detalleCard h3{
+        width: 89%;
+        margin: 1em auto;
+    }
+
+    .detalleCard .btn-delete {
+        margin-left: 0em;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .containerDetalle {
+        width: 87%;
+        margin: 4em 6%;
+    }    
+}
+
+@media screen and (max-width: 320px){
+    .containerDetalle {
+        width: 92%;
+        margin: 4em 4%;
+    }
+}
