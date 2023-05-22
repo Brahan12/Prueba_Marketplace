@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const environment = {\n  production: true,\n  apiEndPoint: \"https://fakestoreapi.com/\",\n  configuration: \"assets/config\"\n};","map":null,"metadata":{},"sourceType":"module"}
