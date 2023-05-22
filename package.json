@@ -22,6 +22,7 @@
     "angular-pipes": "^10.0.0",
     "cors": "^2.8.5",
     "jquery": "^3.7.0",
+    "ngx-csv": "^0.3.2",
     "pipes-module": "^1.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

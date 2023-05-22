@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosService } from 'src/app/services/producto/productos.service';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 @Component({
   selector: 'app-index',
@@ -116,7 +117,20 @@ export class IndexComponent implements OnInit {
   }
   
   descargarCSV(){
-    
+    const options = {
+      title: 'Productos',
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: false,
+      noDownload: false,
+      showTitle: false,
+      useBom: false,
+      headers:['ID','Titulo','Precio','Descripcion','Categoria','Imagen']
+    };
+
+    new ngxCsv(this.agregarCarrito,"reporte",options)
+    $('.hidden-cart').css('display','none')
   }
 
   desplegableCarrito(){

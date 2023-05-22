@@ -41,6 +41,7 @@
 						<h3>Total:</h3>
 						<span class="total-pagar">{{totalProductos}}</span>
 					</div>
+					<button class="exportaDatos" (click)="descargarCSV()">Exportar datos</button>
 				</div>
 				<div *ngIf="vacio" class="vacio">
 					<p>Carrito vacio</p>

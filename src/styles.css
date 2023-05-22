@@ -365,6 +365,25 @@ h1{
     display: none !important;
 }
 
+/* boton datos */
+
+.exportaDatos{
+    width: 80%;
+    margin: 0 10% 1em;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background: brown;
+    padding: 12px 0;
+    outline: none;
+    border: 1px solid white;
+}
+
+.exportaDatos:hover{
+    background: rgba(165, 42, 42, 0.589);
+}
+
 /* Reponsive */
 
 @media screen and (max-width: 1024px){
