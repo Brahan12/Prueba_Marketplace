@@ -62,7 +62,18 @@
     background-color: rgba(221, 33, 49, 0.644);
 }
 
+.vacio p{
+    padding: 5px;
+    text-align: center;
+    font-weight: 600;
+}
+
 /* responsive */
+@media screen and (min-width: 1600px){
+    .containerDetalle {
+        margin: 19.5em 24%;
+    }
+}
 
 @media screen and (max-width: 768px){
     .containerDetalle {

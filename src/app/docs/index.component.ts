@@ -24,8 +24,6 @@ export class IndexComponent implements OnInit {
   productsList: any;
   allproducts: any=[];
   productosCarro: any=[];
-  total: number = 0;
-  totalofProductos: number = 0;
   valorTotal: any;
   countProducts: any;
   bandera: any;
@@ -34,6 +32,16 @@ export class IndexComponent implements OnInit {
   productosJoyeria: any=[];
   productosHombre: any=[];
   productosMujer: any=[];
+  cont: number = 0;
+  vacio: boolean = false;
+  agregarCarrito: any=[];
+  totalProductos: number = 0;
+  contElement: number = 0;
+  unicos: any=[];
+  agregarCarritoFinal: any=[];
+  data: any=[];
+  datosCarro: any=[];
+  btn: any;
 
   constructor(private servicesProductos: ProductosService, private router: Router) { }
 
@@ -41,7 +49,20 @@ export class IndexComponent implements OnInit {
     this.bandera = 1
     this.listProductos();
     this.carruselP();
-    this.allproducts = localStorage.getItem('datos')
+    this.data = sessionStorage.getItem('datos')
+    this.datosCarro = JSON.parse(this.data)
+    if(this.datosCarro != null){
+      this.agregarCarrito= this.datosCarro
+      for (let index = 0; index < this.datosCarro.length; index++) {
+        const element = this.datosCarro[index];
+        this.cont++;
+        this.totalProductos += element.price;
+        if(!this.unicos.includes(element.id)){
+          this.agregarCarritoFinal.push(element)
+          this.unicos.push(element.id)
+        }
+      }
+    }
   }
 
   listProductos(){
@@ -93,12 +114,56 @@ export class IndexComponent implements OnInit {
         }
     });
   }
+  
+  descargarCSV(){
+    
+  }
 
   desplegableCarrito(){
     if($('.hidden-cart').css('display') == 'none'){
       $('.hidden-cart').css('display','block')
+      if(this.cont == 0){
+        this.vacio = true
+      }else{
+        this.vacio = false
+      }
     }else{
       $('.hidden-cart').css('display','none')
+    }
+  }
+
+  eliminar(id:any){
+    for (let index = 0; index < this.agregarCarritoFinal.length; index++) {
+      if(this.agregarCarritoFinal[index].id == id){
+        if(this.agregarCarritoFinal.length == 1){
+          this.cont = 0;
+        }
+        this.agregarCarritoFinal.splice(index, 1)
+        for (let i = 0; i < this.agregarCarrito.length; i++) {
+          const element = this.agregarCarrito[i];
+          if(id == element.id){
+            this.cont--;
+            this.totalProductos -= this.agregarCarrito[i].price
+            this.agregarCarrito.splice(i, 1)
+          }
+        }
+        break
+      };
+    }
+    if(this.agregarCarritoFinal.length > 0){
+      for (let i = 0; i < this.agregarCarrito.length; i++) {
+        const element = this.agregarCarrito[i];
+        if(element.id == id){
+          this.totalProductos -= this.agregarCarrito[i].price
+          this.cont--;
+          this.agregarCarrito.splice(i, 1)
+          sessionStorage.setItem('datos',JSON.stringify(this.agregarCarrito))
+        }
+      }
+    }
+    if(this.agregarCarritoFinal.length == 0){
+      sessionStorage.removeItem('datos')
+      window.location.reload();
     }
   }
 
@@ -144,6 +209,30 @@ export class IndexComponent implements OnInit {
 
     start();
   }
+
+  getCarrito(data:any){
+    this.servicesProductos.obtenerProductos().toPromise().then(resp =>{
+      for (let index = 0; index < resp.length; index++) {
+        const element = resp[index];
+        if(element.id == data.id){
+          this.cont ++
+          this.agregarCarrito.push(element)
+          this.totalProductos += element.price
+          sessionStorage.setItem('datos',JSON.stringify(this.agregarCarrito))
+          for (let i = 0; i < this.agregarCarrito.length; i++) {
+            const element2 = this.agregarCarrito[i];
+            if(element.id === element2.id){
+              if(!this.unicos.includes(element2.id)){
+                this.agregarCarritoFinal.push(element2)
+                this.unicos.push(element2.id)
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
   
 
   // Función buscador

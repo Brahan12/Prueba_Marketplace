@@ -24,36 +24,40 @@
 				</div>
 			</div>
 
-			<div *ngFor="let item of agregarCarrito" class="container-cart-products hidden-cart">
-				<div class="row-product">
-					<div  class="cart-product">
-						<div class="info-cart-product">
-							<span class="cantidad-producto-carrito">{{cont}}</span>
-							<p class="titulo-producto-carrito">{{item.title}}</p>
-							<span class="precio-producto-carrito">{{item.price}}</span>
+			<div class="container-cart-products hidden-cart">
+				<div *ngIf="!vacio">
+					<div *ngFor="let item of agregarCarritoFinal" class="row-product">
+						<div  class="cart-product">
+							<div class="info-cart-product">
+								<p class="titulo-producto-carrito">{{item.title}}</p>
+								<span class="precio-producto-carrito">{{item.price}}</span>
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close" (click)="eliminar(item.id)">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+							</svg>
 						</div>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close" >
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-						</svg>
+					</div>
+					<div class="cart-total">
+						<h3>Total:</h3>
+						<span class="total-pagar">{{totalProductos}}</span>
 					</div>
 				</div>
-				<div class="cart-total">
-					<h3>Total:</h3>
-					<span class="total-pagar">{{totalProductos}}</span>
+				<div *ngIf="vacio" class="vacio">
+					<p>Carrito vacio</p>
 				</div>
 			</div>
 		</div>
     </div>
 
     <div class="containerDetalle">
-        <div class="detalleCard">
-            <h1>{{category}}</h1>
-            <h3>{{title}}</h3>
-            <img [src]="image" alt="" width="150px">
-            <p>{{description}}</p>
-            <p>{{price}}</p>
-            <button class="btn-cart" (click)="getCarrito()">Añadir al carrito</button>
-			<button class="btn-delete" >Eliminar del carrito</button>
+        <div *ngFor="let item of producto" class="detalleCard">
+            <h1>{{item.category}}</h1>
+            <h3>{{item.title}}</h3>
+            <img [src]="item.image" alt="" width="150px">
+            <p>{{item.description}}</p>
+            <p>{{item.price}}</p>
+            <button class="btn-cart" (click)="getCarrito(item)">Añadir al carrito</button>
+			<button class="btn-delete" (click)="eliminar(item.id)">Eliminar del carrito</button>
         </div>
     </div>
 	
